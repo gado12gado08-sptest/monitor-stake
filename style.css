@@ -1,0 +1,91 @@
+/* Material Design 3 の色・形・文字の決まりに合わせる */
+:root {
+  --primary: #4c662b; --on-primary: #fff;
+  --primary-container: #cdeda3; --on-primary-container: #354e16;
+  --secondary-container: #dce7c8; --on-secondary-container: #404a33;
+  --tertiary-container: #bcece7; --on-tertiary-container: #1f4e4b;
+  --error: #ba1a1a; --error-container: #ffdad6; --on-error-container: #93000a;
+  --surface: #f9faef; --on-surface: #1a1c16; --on-surface-variant: #44483d;
+  --surface-container-low: #f3f4e9; --surface-container: #eeefe3; --surface-container-high: #e8e9de;
+  --outline: #75796c; --outline-variant: #c5c8ba;
+  /* 段階の色。グラフの帯と状態カードで同じ色を使う */
+  --open: #cdeda3; --on-open: #102000; --open-band: #e5f4e4;
+  --light: #f9eeda; --on-light: #3e2e00; --light-band: #fbf3e4;
+  --heavy: #ffdad6; --on-heavy: #410002; --heavy-band: #fdeceb;
+  --trend: #7c5800;
+}
+* { box-sizing: border-box; min-width: 0; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--surface); color: var(--on-surface);
+       font: 16px/1.5 Roboto, "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif; }
+
+.appbar { position: sticky; top: 0; z-index: 2; height: 64px; display: flex; align-items: center; padding: 0 8px 0 16px; background: var(--surface); }
+.appbar h1 { flex: 1; margin: 0; font-size: 22px; font-weight: 400; }
+main { max-width: 720px; margin: 0 auto; padding: 0 16px 112px; }
+
+.banner { margin: 8px 0 16px; padding: 12px 16px; border-radius: 12px; font-size: 14px;
+          background: var(--surface-container-high); color: var(--on-surface-variant); }
+.banner.wait { background: var(--tertiary-container); color: var(--on-tertiary-container); }
+.banner.ok { background: var(--primary-container); color: var(--on-primary-container); }
+.banner.err { background: var(--error-container); color: var(--on-error-container); }
+
+.list { margin-bottom: 16px; border-radius: 12px; overflow: hidden; background: var(--surface-container-low); }
+.item { display: flex; align-items: center; gap: 16px; min-height: 72px; padding: 8px 16px; cursor: pointer; border-bottom: 1px solid var(--outline-variant); }
+.item:last-child { border-bottom: none; }
+.item.sel { background: var(--secondary-container); }
+.item .mark { flex: none; width: 12px; height: 40px; border-radius: 6px; background: var(--surface-container-high); }
+.item .t2 { font-size: 14px; color: var(--on-surface-variant); }
+
+.headline { margin: 0; font-size: 24px; line-height: 32px; }
+.sub { margin: 0 0 12px; font-size: 14px; color: var(--on-surface-variant); }
+
+.state { margin-bottom: 12px; padding: 16px; border-radius: 16px; background: var(--surface-container-high); }
+.state.open { background: var(--open); color: var(--on-open); }
+.state.light { background: var(--light); color: var(--on-light); }
+.state.heavy { background: var(--heavy); color: var(--on-heavy); }
+.state .label { font-size: 12px; opacity: .8; }
+.state .stage { margin: 2px 0 8px; font-size: 28px; line-height: 36px; }
+.state .basis { margin: 0; padding: 0; list-style: none; font-size: 14px; line-height: 22px; font-variant-numeric: tabular-nums; }
+
+.card { margin-bottom: 12px; padding: 16px; border-radius: 12px; background: var(--surface-container-low); }
+.card-title { margin: 0 0 8px; font-size: 14px; font-weight: 500; }
+details.card > summary { cursor: pointer; font-size: 14px; font-weight: 500; min-height: 24px; }
+details.card[open] > summary { margin-bottom: 12px; }
+.note { margin: 4px 0 0; font-size: 12px; color: var(--on-surface-variant); }
+
+.fig { position: relative; height: 200px; }
+.fig.short { height: 160px; }
+.fig > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.fig text { font-size: 11px; fill: var(--on-surface-variant); }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 4px; font-size: 12px; color: var(--on-surface-variant); }
+.legend i { display: inline-block; margin-right: 4px; vertical-align: -1px; }
+.legend .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--primary); }
+.legend .dot.hollow { background: #fff; border: 1.5px solid var(--primary); }
+.legend .bar { width: 16px; height: 4px; border-radius: 2px; background: var(--trend); vertical-align: 2px; }
+
+.ev { display: grid; grid-template-columns: 7.5em 1fr; gap: 0 12px; padding: 8px 0; border-bottom: 1px solid var(--outline-variant); font-size: 14px; }
+.ev:last-child { border-bottom: none; }
+.ev .d { color: var(--on-surface-variant); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ev .k { font-weight: 500; }
+.empty { margin: 0; font-size: 14px; color: var(--on-surface-variant); }
+
+.meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin: 0 0 16px; font-size: 14px; }
+.meta dt { color: var(--on-surface-variant); }
+.meta dd { margin: 0; }
+
+.field { display: flex; flex-direction: column; gap: 4px; margin-top: 12px; }
+.field label { font-size: 12px; color: var(--on-surface-variant); }
+.field input { height: 48px; padding: 0 12px; border: 1px solid var(--outline); border-radius: 4px; font: inherit; background: transparent; color: var(--on-surface); }
+.field input:focus { outline: 2px solid var(--primary); border-color: transparent; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.btn { height: 40px; padding: 0 24px; border: none; border-radius: 20px; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+.btn.filled { background: var(--primary); color: var(--on-primary); }
+.btn.tonal { background: var(--secondary-container); color: var(--on-secondary-container); }
+.btn.text { padding: 0 12px; background: transparent; color: var(--on-surface-variant); }
+.btn.danger { padding: 0 12px; background: transparent; color: var(--error); }
+.btn:focus-visible, .fab:focus-visible, summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+.fab { position: fixed; right: 16px; bottom: 16px; display: flex; align-items: center; gap: 12px; height: 56px; padding: 0 20px 0 16px;
+       border: none; border-radius: 16px; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer;
+       background: var(--primary-container); color: var(--on-primary-container);
+       box-shadow: 0 1px 3px rgba(0,0,0,.3), 0 4px 8px 3px rgba(0,0,0,.15); }

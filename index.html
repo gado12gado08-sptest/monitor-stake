@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f9faef">
+<title>管理モニター杭</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="appbar">
+  <h1>管理モニター杭</h1>
+</header>
+
+<main>
+  <p class="banner" id="msg">右下の「読み取り」を押してから、スマホの背面を杭のタグに当ててください。</p>
+
+  <div class="list" id="stakes" hidden></div>
+
+  <section id="detail" hidden>
+    <p class="headline" id="name"></p>
+    <p class="sub" id="last-read"></p>
+
+    <div class="state" id="state">
+      <div class="label">現在の段階</div>
+      <div class="stage" id="stage"></div>
+      <ul class="basis" id="basis"></ul>
+    </div>
+
+    <div class="card">
+      <p class="card-title" id="daily-title">R:FR</p>
+      <div class="fig" id="daily"><svg></svg></div>
+      <div class="legend">
+        <span><i class="dot"></i>晴天日</span>
+        <span><i class="dot hollow"></i>曇天日</span>
+        <span><i class="bar"></i>漸増・漸減の期間</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title" id="events-title">検出した変化</p>
+      <div id="events"></div>
+    </div>
+
+    <details class="card">
+      <summary id="check-title">杭の点検</summary>
+      <dl class="meta" id="meta"></dl>
+      <p class="card-title">直近72時間</p>
+      <div class="fig short" id="hourly"><svg></svg></div>
+      <p class="note">棒：明るさ（その期間の最大を1とした相対値）　線：R:FR</p>
+    </details>
+
+    <details class="card">
+      <summary id="settings-title">名前と補正係数</summary>
+      <div class="field">
+        <label for="f-name">杭の名前</label>
+        <input id="f-name" maxlength="30">
+      </div>
+      <div class="field">
+        <label for="f-k">補正係数 k</label>
+        <input id="f-k" type="number" step="0.01" inputmode="decimal">
+        <span class="note">開けた場所の晴天正午にR:FRが1.15になる値</span>
+      </div>
+      <div class="row">
+        <button class="btn filled" id="b-save">保存</button>
+        <button class="btn tonal" id="b-csv">CSV保存</button>
+        <button class="btn danger" id="b-del">このスマホの記録を削除</button>
+      </div>
+      <p class="note">杭のタグの記録は、PicoのBOOTSELボタンを3秒押し続けると消去されます（LEDが5回点滅）。</p>
+    </details>
+  </section>
+</main>
+
+<button class="fab" id="scan">
+  <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H4V4h16v16zM18 6h-5c-1.1 0-2 .9-2 2v2.28c-.6.35-1 .98-1 1.72 0 1.1.9 2 2 2s2-.9 2-2c0-.74-.4-1.38-1-1.72V8h3v8H8V8h2V6H6v12h12V6z"/></svg>
+  読み取り
+</button>
+<script type="module" src="app.js"></script>
+</body>
+</html>
